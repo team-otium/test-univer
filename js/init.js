@@ -4,6 +4,10 @@ var can = document.querySelector('canvas')
 var renderer = new THREE.WebGLRenderer({canvas: can})
 renderer.setSize(window.innerWidth, window.innerHeight)
 
+// LIGHTS
+var light = new THREE.AmbientLight( 0x808080 ) // soft white light
+scene.add( light )
+
 let params = {
     q1: {
         rep: 0
