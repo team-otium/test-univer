@@ -1,16 +1,26 @@
-var geometry = new THREE.SphereGeometry(3, 50, 50);
+var geometry = new THREE.SphereGeometry(3, params.q1.rep, params.q1.rep);
 var material = new THREE.MeshNormalMaterial();
 var sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 camera.position.z = 10;
 
-// var animate = function () {
-//     requestAnimationFrame( animate );
-//     sphere.rotation.y += 0.01;
-//     renderer.render( scene, camera );
-// };
+controllerq1.onChange(function(value) {
+    update(value)
+  });
 
-// animate();
 
-renderer.render( scene, camera );
+function update(){
+    scene.remove(sphere)
+    geometry = new THREE.SphereGeometry(3, params.q1.rep, params.q1.rep);
+    sphere = new THREE.Mesh(geometry, material);
+    scene.add(sphere);
+}
+
+var animate = function () {
+    requestAnimationFrame( animate );
+    sphere.rotation.y += 0.01;
+    renderer.render( scene, camera );
+};
+
+animate();
