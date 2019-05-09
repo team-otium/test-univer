@@ -1,5 +1,7 @@
 var geometry = new THREE.SphereGeometry(3, params.q1.rep, params.q1.rep);
-var material = new THREE.MeshNormalMaterial();
+var material = new THREE.MeshNormalMaterial({
+    wireframe: true
+});
 var sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
