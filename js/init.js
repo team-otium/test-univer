@@ -37,7 +37,7 @@ let params = {
         rep: 0
     },
     q6: {
-        rep: 0
+        rep: 2
     },
     q7: {
         rep: 0
@@ -66,7 +66,7 @@ let controllerq32 = q3.add(params.q3, 'freq', 1, 100)
 q4.add(params.q4, 'rep1', 0, 10)
 q4.add(params.q4, 'rep2', 0, 10)
 q5.add(params.q5, 'rep', 0, 10)
-let controllerq6 = q6.add(params.q6, 'rep', 0, 10)
+let controllerq6 = q6.add(params.q6, 'rep', 0, 4).step(1)
 q7.add(params.q7, 'rep', 0, 10)
 
 function rand(min, max) {
