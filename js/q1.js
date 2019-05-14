@@ -1,7 +1,16 @@
 class FloatingObj {
   constructor(){
-    var geometry = new THREE.SphereGeometry(1, params.q1.rep, params.q1.rep);
-    var material = new THREE.MeshLambertMaterial( {color: 0xd4c2f2} );
+    let random = Math.floor(Math.random() * 2)
+    switch(random){
+      case 0:
+        var geometry = new THREE.SphereGeometry(1, params.q1.rep, params.q1.rep)
+        break
+      case 1:
+        var geometry = new THREE.ConeGeometry( 1, 3, params.q1.rep );
+        break
+    }
+    
+    var material = new THREE.MeshPhongMaterial( {color: 0xd4c2f2} );
     var sphere = new THREE.Mesh(geometry, material);
 
     this.y = rand(15, 20)
@@ -14,13 +23,16 @@ class FloatingObj {
 
 let spheres = []
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < params.q2.rep; i++) {
   let s = new FloatingObj()
   spheres.push(s)
   scene.add(s.obj)
 }
 
 controllerq1.onChange(function(value) {
+    updateq1(value)
+  });
+  controllerq2.onChange(function(value) {
     updateq1(value)
   });
 
@@ -30,7 +42,7 @@ function updateq1(){
       scene.remove(s.obj)
     })
     spheres = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < params.q2.rep; i++) {
       let s = new FloatingObj()
       spheres.push(s)
       scene.add(s.obj)

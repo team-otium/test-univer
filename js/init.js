@@ -4,15 +4,12 @@ var can = document.querySelector('canvas')
 var renderer = new THREE.WebGLRenderer({canvas: can, antialias: true, physicallyCorrectLights: true})
 renderer.setSize(window.innerWidth, window.innerHeight)
 
-// LIGHTS
-var light = new THREE.AmbientLight( 0xcccccc ) // soft white light
-scene.add( light )
-
 var animate = function () {
     requestAnimationFrame( animate );
 
     animateq1()
     animateq3()
+    animateq5()
     animateq6()
 
     renderer.render( scene, camera );
@@ -20,10 +17,10 @@ var animate = function () {
 
 let params = {
     q1: {
-        rep: 0
+        rep: 2
     },
     q2: {
-        rep: 0
+        rep: 2
     },
     q3: {
         amp: 15,
@@ -34,7 +31,7 @@ let params = {
         rep2: 0
     },
     q5: {
-        rep: 0
+        rep: 1
     },
     q6: {
         rep: 2
@@ -59,13 +56,13 @@ q4.open()
 q5.open()
 q6.open()
 q7.open()
-let controllerq1 = q1.add(params.q1, 'rep', 1, 15)
-q2.add(params.q2, 'rep', 0, 10)
+let controllerq1 = q1.add(params.q1, 'rep', 1, 15).step(1);
+let controllerq2 = q2.add(params.q2, 'rep', 2, 15).step(1);
 let controllerq31 = q3.add(params.q3, 'amp', 0, 100)
 let controllerq32 = q3.add(params.q3, 'freq', 1, 100)
 q4.add(params.q4, 'rep1', 0, 10)
 q4.add(params.q4, 'rep2', 0, 10)
-q5.add(params.q5, 'rep', 0, 10)
+let controllerq5 = q5.add(params.q5, 'rep', 1, 15)
 let controllerq6 = q6.add(params.q6, 'rep', 0, 4).step(1)
 q7.add(params.q7, 'rep', 0, 10)
 

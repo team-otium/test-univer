@@ -6,22 +6,32 @@ class Box {
     switch (mom) {
       case 0:
         var materialBox = new THREE.MeshLambertMaterial( {color: 0x9198c7, side: THREE.BackSide} );
+        var light = new THREE.PointLight( 0xc6c8f8, 0.5, 2000, 2 );
+        var ambientLight = new THREE.AmbientLight( 0x444444 ) // soft white light
         break;
 
       case 1:
         var materialBox = new THREE.MeshLambertMaterial( {color: 0xffffe0, side: THREE.BackSide} );
+        var light = new THREE.PointLight( 0xf7d0d6, 0.5, 2000, 2 );
+        var ambientLight = new THREE.AmbientLight( 0xaaaaaa ) // soft white light
         break;
 
       case 2:
         var materialBox = new THREE.MeshLambertMaterial( {color: 0x94bfe0, side: THREE.BackSide} );
+        var light = new THREE.PointLight( 0xffffff, 0.5, 2000, 2 );
+        var ambientLight = new THREE.AmbientLight( 0xcccccc ) // soft white light
         break;
 
       case 3:
         var materialBox = new THREE.MeshLambertMaterial( {color: 0xf0b1b1, side: THREE.BackSide} );
+        var light = new THREE.PointLight( 0xeb4a3e, 0.5, 2000, 2 );
+        var ambientLight = new THREE.AmbientLight( 0x999999 ) // soft white light
         break;
 
       case 4:
         var materialBox = new THREE.MeshLambertMaterial( {color: 0x000041, side: THREE.BackSide} );
+        var light = new THREE.PointLight( 0xc6c8f8, 0.5, 2000, 2 );
+        var ambientLight = new THREE.AmbientLight( 0x444444 ) // soft white light
         break;
     
       default:
@@ -31,9 +41,10 @@ class Box {
 
     var sphere = new THREE.Mesh(geometryBox, materialBox);
 
-    var light = new THREE.PointLight( 0xffffff, 0.5, 2000, 2 );
+    
     light.position.set( 0, 100, -420 );
     this.obj.add( light );
+    this.obj.add(ambientLight)
 
     var pointLightHelper = new THREE.PointLightHelper( light, 3 );
     //this.obj.add( pointLightHelper );
